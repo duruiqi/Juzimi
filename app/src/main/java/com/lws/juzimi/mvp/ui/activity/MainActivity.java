@@ -11,9 +11,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lws.juzimi.R;
 import com.lws.juzimi.common.ActivityController;
-import com.lws.juzimi.mvp.ui.fragment.FragmentAllArticle;
-import com.lws.juzimi.mvp.ui.fragment.FragmentJuji;
-import com.lws.juzimi.mvp.ui.fragment.FragmentOriginal;
+import com.lws.juzimi.mvp.ui.fragment.AllArticleFragment;
+import com.lws.juzimi.mvp.ui.fragment.JujiFragment;
+import com.lws.juzimi.mvp.ui.fragment.OriginalFragment;
 import com.lws.juzimi.mvp.ui.fragment.MeijuFragment;
 
 import butterknife.BindView;
@@ -139,21 +139,21 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 break;
             case 1:
                 if (mAllArticleFragment == null) {
-                    mAllArticleFragment = new FragmentAllArticle();
+                    mAllArticleFragment = new AllArticleFragment();
                 }
                 addFragment(mAllArticleFragment);
                 getSupportFragmentManager().beginTransaction().show(mAllArticleFragment).commit();
                 break;
             case 2:
                 if (mJujiFragment == null) {
-                    mJujiFragment = new FragmentJuji();
+                    mJujiFragment = new JujiFragment();
                 }
                 addFragment(mJujiFragment);
                 getSupportFragmentManager().beginTransaction().show(mJujiFragment).commit();
                 break;
             case 3:
                 if (mOriginalFragment == null) {
-                    mOriginalFragment = new FragmentOriginal();
+                    mOriginalFragment = new OriginalFragment();
                 }
                 addFragment(mOriginalFragment);
                 getSupportFragmentManager().beginTransaction().show(mOriginalFragment).commit();

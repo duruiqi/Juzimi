@@ -21,16 +21,20 @@ import butterknife.Unbinder;
 
 
 /**
- * 设置frag
+ * 名人名句
  */
-public class FragmentOriginal extends BaseFragment {
+public class AllArticleFragment extends BaseFragment {
 
+    private static final String TYPE1 = "jingdiantaici";
 
-    private static final String TYPE1 = "ju";
+    private static final String TYPE2 = "zhaichao";
 
-    private static final String TYPE2 = "week";
+    private static final String TYPE3 = "sanwen";
 
-    private static final String TYPE3 = "recommend";
+    private static final String TYPE4 = "dongmantaici";
+
+    private static final String TYPE5 = "guwen";
+
 
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
@@ -47,7 +51,7 @@ public class FragmentOriginal extends BaseFragment {
                              Bundle savedInstanceState) {
 
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_original, container, false);
+            view = inflater.inflate(R.layout.fragment_all_article, container, false);
         }
 
         unbinder = ButterKnife.bind(this, view);
@@ -55,27 +59,32 @@ public class FragmentOriginal extends BaseFragment {
         initControls();
 
         return view;
-
     }
 
     private void initControls() {
 
         //初始化各fragment
-        FragmentOriginalList fragmentOriginalList1 = FragmentOriginalList.newInstance(TYPE1);
-        FragmentOriginalList fragmentOriginalList2 = FragmentOriginalList.newInstance(TYPE2);
-        FragmentOriginalList fragmentOriginalLis3 = FragmentOriginalList.newInstance(TYPE3);
+        Fragment fragmentArticleList1 = AllarticleListFragment.newInstance(TYPE1);
+        Fragment fragmentArticleList2 = AllarticleListFragment.newInstance(TYPE2);
+        Fragment fragmentArticleList3 = AllarticleListFragment.newInstance(TYPE3);
+        Fragment fragmentArticleList4 = AllarticleListFragment.newInstance(TYPE4);
+        Fragment fragmentArticleList5 = AllarticleListFragment.newInstance(TYPE5);
 
         //将fragment装进列表中
         List<Fragment> list_fragment = new ArrayList<>();
-        list_fragment.add(fragmentOriginalList1);
-        list_fragment.add(fragmentOriginalList2);
-        list_fragment.add(fragmentOriginalLis3);
+        list_fragment.add(fragmentArticleList1);
+        list_fragment.add(fragmentArticleList2);
+        list_fragment.add(fragmentArticleList3);
+        list_fragment.add(fragmentArticleList4);
+        list_fragment.add(fragmentArticleList5);
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         List<String> list_title = new ArrayList<>();
-        list_title.add("最新原创");
-        list_title.add("本周热门");
-        list_title.add("推荐原创");
+        list_title.add("电影台词");
+        list_title.add("小说摘抄");
+        list_title.add("散文美句");
+        list_title.add("动漫语录");
+        list_title.add("古文名句");
 
         //设置TabLayout的模式
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -83,6 +92,8 @@ public class FragmentOriginal extends BaseFragment {
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(0)));
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(1)));
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(2)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_title.get(3)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_title.get(4)));
 
         TitleTabAdapter titleTabAdapter = new TitleTabAdapter(getChildFragmentManager(), list_fragment, list_title);
 
@@ -98,5 +109,4 @@ public class FragmentOriginal extends BaseFragment {
 
         unbinder.unbind();
     }
-
 }

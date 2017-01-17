@@ -21,13 +21,16 @@ import butterknife.Unbinder;
 
 
 /**
- * 任务Frag
+ * 设置frag
  */
-public class FragmentJuji extends BaseFragment {
+public class OriginalFragment extends BaseFragment {
 
-    private static final String TYPE1 = "albums";
 
-    private static final String TYPE2 = "newalbums";
+    private static final String TYPE1 = "ju";
+
+    private static final String TYPE2 = "week";
+
+    private static final String TYPE3 = "recommend";
 
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
@@ -44,7 +47,7 @@ public class FragmentJuji extends BaseFragment {
                              Bundle savedInstanceState) {
 
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_juji, container, false);
+            view = inflater.inflate(R.layout.fragment_original, container, false);
         }
 
         unbinder = ButterKnife.bind(this, view);
@@ -52,29 +55,34 @@ public class FragmentJuji extends BaseFragment {
         initControls();
 
         return view;
+
     }
 
     private void initControls() {
 
         //初始化各fragment
-        FragmentJujiList fragmentJujiList1 = FragmentJujiList.newInstance(TYPE1);
-        FragmentJujiList fragmentJujiList2 = FragmentJujiList.newInstance(TYPE2);
+        OriginalListFragment originalListFragment1 = OriginalListFragment.newInstance(TYPE1);
+        OriginalListFragment originalListFragment2 = OriginalListFragment.newInstance(TYPE2);
+        OriginalListFragment fragmentOriginalLis3 = OriginalListFragment.newInstance(TYPE3);
 
         //将fragment装进列表中
         List<Fragment> list_fragment = new ArrayList<>();
-        list_fragment.add(fragmentJujiList1);
-        list_fragment.add(fragmentJujiList2);
+        list_fragment.add(originalListFragment1);
+        list_fragment.add(originalListFragment2);
+        list_fragment.add(fragmentOriginalLis3);
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         List<String> list_title = new ArrayList<>();
-        list_title.add("精选句集");
-        list_title.add("最新句集");
+        list_title.add("最新原创");
+        list_title.add("本周热门");
+        list_title.add("推荐原创");
 
         //设置TabLayout的模式
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         //为TabLayout添加tab名称
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(0)));
         tabLayout.addTab(tabLayout.newTab().setText(list_title.get(1)));
+        tabLayout.addTab(tabLayout.newTab().setText(list_title.get(2)));
 
         TitleTabAdapter titleTabAdapter = new TitleTabAdapter(getChildFragmentManager(), list_fragment, list_title);
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ import com.victor.loading.rotate.RotateLoading;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentJujiList extends BaseFragment implements IAlbumsView {
+public class JujiListFragment extends BaseFragment implements IAlbumsView {
 
     private static final String ARG_TYPE = "type";
 
@@ -52,13 +51,13 @@ public class FragmentJujiList extends BaseFragment implements IAlbumsView {
 
     private boolean isRefresh = true;
 
-    public FragmentJujiList() {
+    public JujiListFragment() {
 
     }
 
-    public static FragmentJujiList newInstance(String type) {
+    public static JujiListFragment newInstance(String type) {
 
-        FragmentJujiList fragment = new FragmentJujiList();
+        JujiListFragment fragment = new JujiListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_TYPE, type);
         fragment.setArguments(args);

@@ -23,7 +23,7 @@ import com.victor.loading.rotate.RotateLoading;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentOriginalList extends BaseFragment implements IOrignalView {
+public class OriginalListFragment extends BaseFragment implements IOrignalView {
 
     private static final String ARG_TYPE = "type";
 
@@ -49,12 +49,12 @@ public class FragmentOriginalList extends BaseFragment implements IOrignalView {
 
     private boolean isRefresh = true;
 
-    public FragmentOriginalList() {
+    public OriginalListFragment() {
     }
 
-    public static FragmentOriginalList newInstance(String type) {
+    public static OriginalListFragment newInstance(String type) {
 
-        FragmentOriginalList fragment = new FragmentOriginalList();
+        OriginalListFragment fragment = new OriginalListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_TYPE, type);
         fragment.setArguments(args);
